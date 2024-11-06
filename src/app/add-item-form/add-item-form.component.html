@@ -1,0 +1,10 @@
+<form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="itemName" placeholder="Adicionar item">
+  <button type="submit">Adicionar</button>
+
+  <div *ngIf="itemForm.controls['itemName'].invalid && itemForm.controls['itemName'].touched">
+    <small *ngIf="itemForm.controls['itemName'].errors?.['required']">O nome do item é obrigatório.</small>
+    <small *ngIf="itemForm.controls['itemName'].errors?.['minlength']">O nome deve ter no mínimo 2 caracteres.</small>
+    <small *ngIf="itemForm.controls['itemName'].errors?.['whitespace']">O item não pode ser vazio ou espaços em branco.</small>
+  </div>
+</form>

@@ -1,0 +1,7 @@
+<div class="container">
+  <h1>Lista de Compras</h1>
+  <app-add-item-form (addItem)="addItem($event)"></app-add-item-form>
+  <app-item-list [items]="items" 
+                 (togglePurchased)="toggleItemPurchased($event)" 
+                 (remove)="removeItem($event)"></app-item-list>
+</div>

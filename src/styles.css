@@ -1,0 +1,135 @@
+/* Estilos globais */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f4f8;
+  color: #343a40;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #007bff;
+}
+
+/* Estilo do formulário e inputs */
+form, .formAdicionar {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+input[type="text"], input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+  /* min-width: 250px; */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Estilo dos botões */
+.divBotao, button {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo da lista */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+  background: #ffffff;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  font-size: 20px;
+}
+
+li:hover {
+  background-color: #f1f1f1;
+  transform: translateY(-2px);
+}
+
+.purchased {
+  text-decoration: line-through;
+  color: green;
+}
+
+/* Estilo da mensagem de erro */
+small {
+  color: red;
+  font-size: 12px;
+}
+
+/* Tornando a interface responsiva */
+@media (max-width: 768px) {
+  li {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  button {
+    margin: 5px 0;
+  }
+
+  .divBotao > button{
+    margin: 5px 0 0 0;
+  }
+
+  form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .formAdicionar {
+    padding: 0 15px;
+  }
+
+  .divBotao {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
