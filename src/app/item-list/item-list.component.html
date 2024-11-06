@@ -1,23 +1,23 @@
 <h2>Itens Não Comprados</h2>
 <ul>
-  <li *ngFor="let item of notPurchasedItems; let i = index">
-    <input type="text" [(ngModel)]="item.name" *ngIf="editIndex === i" />
-    <span *ngIf="editIndex !== i" [class.purchased]="item.isPurchased">{{ item.name }}</span>
+  <li *ngFor="let item of notPurchasedItems">
+    <input type="text" [(ngModel)]="item.name" *ngIf="editItemId === item.id" />
+    <span *ngIf="editItemId !== item.id" [class.purchased]="item.isPurchased">{{ item.name }}</span>
     <div class="divBotao">
-      <button *ngIf="editIndex !== i" (click)="toggleItemPurchased(item.id)">
+      <button *ngIf="editItemId !== item.id" (click)="toggleItemPurchased(item.id)">
         <i class="fas" [ngClass]="item.isPurchased ? 'fa-undo' : 'fa-check'"></i> 
         {{ item.isPurchased ? 'Desmarcar' : 'Marcar como Comprado' }}
       </button>   
-      <button *ngIf="editIndex !== i" (click)="removeItem(item.id)">
+      <button *ngIf="editItemId !== item.id" (click)="removeItem(item.id)">
         <i class="fas fa-trash"></i> Remover
       </button>
-      <button *ngIf="editIndex !== i" (click)="editItem(i)">
+      <button *ngIf="editItemId !== item.id" (click)="editItem(item.id)">
         <i class="fas fa-edit"></i> Editar
       </button>
-      <button *ngIf="editIndex === i" (click)="saveEdit(i)">
+      <button *ngIf="editItemId === item.id" (click)="saveEdit()">
         <i class="fas fa-save"></i> Salvar
       </button>
-      <button *ngIf="editIndex === i" (click)="cancelEdit()">
+      <button *ngIf="editItemId === item.id" (click)="cancelEdit()">
         <i class="fas fa-times"></i> Cancelar
       </button>
     </div>
@@ -26,24 +26,24 @@
 
 <h2>Itens Comprados</h2>
 <ul>
-  <li *ngFor="let item of purchasedItems; let i = index">
-    <input type="text" [(ngModel)]="item.name" *ngIf="editIndex === i" />
-    <span *ngIf="editIndex !== i" [class.purchased]="item.isPurchased">{{ item.name }}</span>
+  <li *ngFor="let item of purchasedItems">
+    <input type="text" [(ngModel)]="item.name" *ngIf="editItemId === item.id" />
+    <span *ngIf="editItemId !== item.id" [class.purchased]="item.isPurchased">{{ item.name }}</span>
     <div class="divBotao">
-      <button *ngIf="editIndex !== i" (click)="toggleItemPurchased(item.id)">
+      <button *ngIf="editItemId !== item.id" (click)="toggleItemPurchased(item.id)">
         <i class="fas" [ngClass]="item.isPurchased ? 'fa-undo' : 'fa-check'"></i> 
         {{ item.isPurchased ? 'Desmarcar' : 'Marcar como Comprado' }}
       </button>
-      <button *ngIf="editIndex !== i" (click)="removeItem(item.id)">
+      <button *ngIf="editItemId !== item.id" (click)="removeItem(item.id)">
         <i class="fas fa-trash"></i> Remover
       </button>
-      <button *ngIf="editIndex !== i" (click)="editItem(i)">
+      <button *ngIf="editItemId !== item.id" (click)="editItem(item.id)">
         <i class="fas fa-edit"></i> Editar
       </button>
-      <button *ngIf="editIndex === i" (click)="saveEdit(i)">
+      <button *ngIf="editItemId === item.id" (click)="saveEdit()">
         <i class="fas fa-save"></i> Salvar
       </button>
-      <button *ngIf="editIndex === i" (click)="cancelEdit()">
+      <button *ngIf="editItemId === item.id" (click)="cancelEdit()">
         <i class="fas fa-times"></i> Cancelar
       </button>
     </div>

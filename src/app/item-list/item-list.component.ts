@@ -16,18 +16,18 @@ export class ItemListComponent {
   @Output() remove = new EventEmitter<number>();
   @Output() togglePurchased = new EventEmitter<number>();
 
-  editIndex: number | null = null;
+  editItemId: number | null = null;
 
-  editItem(index: number) {
-    this.editIndex = index;
+  editItem(id: number) {
+    this.editItemId = id;
   }
 
-  saveEdit(index: number) {
-    this.editIndex = null;
+  saveEdit() {
+    this.editItemId = null;
   }
 
   cancelEdit() {
-    this.editIndex = null;
+    this.editItemId = null;
   }
 
   get purchasedItems() {
