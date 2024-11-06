@@ -34,11 +34,11 @@
         <i class="fas" [ngClass]="item.isPurchased ? 'fa-undo' : 'fa-check'"></i> 
         {{ item.isPurchased ? 'Desmarcar' : 'Marcar como Comprado' }}
       </button>
-      <button *ngIf="editItemId !== item.id" (click)="removeItem(item.id)">
-        <i class="fas fa-trash"></i> Remover
-      </button>
       <button *ngIf="editItemId !== item.id" (click)="editItem(item.id)">
         <i class="fas fa-edit"></i> Editar
+      </button>
+      <button *ngIf="editItemId !== item.id" (click)="removeItem(item.id)">
+        <i class="fas fa-trash"></i> Remover
       </button>
       <button *ngIf="editItemId === item.id" (click)="saveEdit()">
         <i class="fas fa-save"></i> Salvar
