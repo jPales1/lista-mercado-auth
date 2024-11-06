@@ -101,6 +101,17 @@ small {
   font-size: 12px;
 }
 
+.input-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.input-group input {
+  flex: 1;
+  margin-right: 10px;
+}
+
 /* Tornando a interface responsiva */
 @media (max-width: 768px) {
   li {

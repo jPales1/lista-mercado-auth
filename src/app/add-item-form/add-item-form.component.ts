@@ -17,7 +17,7 @@ export class AddItemFormComponent {
 
   constructor(private fb: FormBuilder) {
     this.itemForm = this.fb.group({
-      itemName: ['', [Validators.required, Validators.minLength(2), this.noWhitespaceValidator]]
+      itemName: ['', [Validators.required, Validators.minLength(2)]]
     });
   }
 
@@ -26,11 +26,5 @@ export class AddItemFormComponent {
       this.addItem.emit(this.itemForm.value.itemName);
       this.itemForm.reset();
     }
-  }
-
-  noWhitespaceValidator(control: any) {
-    const isWhitespace = (control.value || '').trim().length === 0;
-    const isValid = !isWhitespace;
-    return isValid ? null : { whitespace: true };
   }
 }
