@@ -23,24 +23,24 @@ export class LoginComponent implements OnInit {
         this.shoppingListService.getUser(user.sub || '').subscribe(
           existingUser => {
             if (!existingUser) {
-              this.shoppingListService.addUser({
-                id: user.sub || '',
-                name: user.name || '',
-                email: user.email || ''
-              }).subscribe();
+              this.addUserToDatabase(user);
             }
           },
           error => {
             if (error.status === 404) {
-              this.shoppingListService.addUser({
-                id: user.sub || '',
-                name: user.name || '',
-                email: user.email || ''
-              }).subscribe();
+              this.addUserToDatabase(user);
             }
           }
         );
       }
     });
+  }
+
+  private addUserToDatabase(user: any) {
+    this.shoppingListService.addUser({
+      id: user.sub || '',
+      name: user.name || '',
+      email: user.email || ''
+    }).subscribe();
   }
 }
