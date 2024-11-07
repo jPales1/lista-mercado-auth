@@ -5,8 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '@auth0/auth0-angular';
-import { Item } from './item.model';
 import { ShoppingListService } from './shopping-list.service';
+import { Item } from './item.model';
 
 @Component({
   selector: 'app-root',
@@ -24,23 +24,21 @@ export class AppComponent {
   }
 
   loadItems() {
-    this.shoppingListService.getItems().subscribe(items => {
-      this.items = items;
-    });
+    this.shoppingListService.getItems().subscribe(items => this.items = items);
   }
 
   addItem(itemName: string) {
     if (itemName) {
       const newItem: Partial<Item> = { name: itemName, isPurchased: false };
       this.shoppingListService.addItem(newItem as Item).subscribe(() => {
-        this.loadItems(); // Recarrega a lista de itens do backend
+        this.loadItems(); 
       });
     }
   }
 
   removeItem(id: number) {
     this.shoppingListService.removeItem(id).subscribe(() => {
-      this.items = this.items.filter(item => item.id !== id); // Atualize a lista de itens no frontend
+      this.items = this.items.filter(item => item.id !== id); 
     });
   }
 
@@ -49,7 +47,6 @@ export class AppComponent {
     if (item) {
       item.isPurchased = !item.isPurchased;
       this.shoppingListService.updateItem(item).subscribe(updatedItem => {
-        // Atualize o item na lista local se necessário
         const index = this.items.findIndex(i => i.id === updatedItem.id);
         if (index !== -1) {
           this.items[index] = updatedItem;

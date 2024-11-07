@@ -38,18 +38,12 @@ export class ItemListComponent implements OnInit {
   saveEdit(item: Item) {
     this.editItemId = null;
 
-    // Enviar a atualização para o backend
     this.shoppingListService.updateItem(item).subscribe({
       next: (updatedItem) => {
-        // Atualize o item na lista local se necessário
         const index = this.items.findIndex(i => i.id === updatedItem.id);
         if (index !== -1) {
           this.items[index] = updatedItem;
         }
-      },
-      error: () => {
-        // Trate o erro se necessário
-        console.error('Erro ao atualizar o item');
       }
     });
   }
