@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
 import { AddItemFormComponent } from './add-item-form/add-item-form.component';
 import { ItemListComponent } from './item-list/item-list.component';
+import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
-
-export interface Item {
-  id: number;
-  name: string;
-  isPurchased: boolean;
-}
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from '@auth0/auth0-angular';
+import { Item } from './item.model';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [AddItemFormComponent, ItemListComponent, CommonModule],
+  imports: [AddItemFormComponent, ItemListComponent, LoginComponent, CommonModule, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -20,6 +18,8 @@ export class AppComponent {
   title = 'lista-supermercado';
   items: Item[] = [];
   nextId = 1;
+
+  constructor(public auth: AuthService) {}
 
   addItem(itemName: string) {
     if (itemName) {
