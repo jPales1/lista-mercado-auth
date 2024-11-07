@@ -14,7 +14,7 @@
       <button *ngIf="editItemId !== item.id" (click)="removeItem(item.id)">
         <i class="fas fa-trash"></i> Remover
       </button>
-      <button *ngIf="editItemId === item.id" (click)="saveEdit()">
+      <button *ngIf="editItemId === item.id" (click)="saveEdit(item)">
         <i class="fas fa-save"></i> Salvar
       </button>
       <button *ngIf="editItemId === item.id" (click)="cancelEdit()">
@@ -36,11 +36,11 @@
       </button>
       <button *ngIf="editItemId !== item.id" (click)="editItem(item.id)">
         <i class="fas fa-edit"></i> Editar
-      </button>
+      </button>   
       <button *ngIf="editItemId !== item.id" (click)="removeItem(item.id)">
         <i class="fas fa-trash"></i> Remover
       </button>
-      <button *ngIf="editItemId === item.id" (click)="saveEdit()">
+      <button *ngIf="editItemId === item.id" (click)="saveEdit(item)">
         <i class="fas fa-save"></i> Salvar
       </button>
       <button *ngIf="editItemId === item.id" (click)="cancelEdit()">

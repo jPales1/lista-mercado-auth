@@ -17,7 +17,6 @@ export class ItemListComponent implements OnInit {
   @Output() togglePurchased = new EventEmitter<number>();
 
   editItemId: number | null = null;
-
   constructor(private shoppingListService: ShoppingListService) {}
 
   ngOnInit() {
@@ -28,10 +27,6 @@ export class ItemListComponent implements OnInit {
     this.shoppingListService.getItems().subscribe(items => this.items = items);
   }
 
-  addItem(item: Item) {
-    this.shoppingListService.addItem(item).subscribe(() => this.loadItems());
-  }
-
   removeItem(id: number) {
     this.shoppingListService.removeItem(id).subscribe(() => this.loadItems());
   }
@@ -40,8 +35,23 @@ export class ItemListComponent implements OnInit {
     this.editItemId = id;
   }
 
-  saveEdit() {
+  saveEdit(item: Item) {
     this.editItemId = null;
+
+    // Enviar a atualização para o backend
+    this.shoppingListService.updateItem(item).subscribe({
+      next: (updatedItem) => {
+        // Atualize o item na lista local se necessário
+        const index = this.items.findIndex(i => i.id === updatedItem.id);
+        if (index !== -1) {
+          this.items[index] = updatedItem;
+        }
+      },
+      error: () => {
+        // Trate o erro se necessário
+        console.error('Erro ao atualizar o item');
+      }
+    });
   }
 
   cancelEdit() {
