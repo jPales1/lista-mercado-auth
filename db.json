@@ -10,12 +10,14 @@
     {
       "id": "6ddf",
       "name": "Casa",
-      "isPurchased": false
+      "isPurchased": false,
+      "userId": "google-oauth2|100908206170681896891"
     },
     {
       "id": "65b1",
       "name": "Carro",
-      "isPurchased": false
+      "isPurchased": false,
+      "userId": "google-oauth2|100908206170681896891"
     }
   ]
 }
